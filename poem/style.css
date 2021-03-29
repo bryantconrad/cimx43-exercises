@@ -12,6 +12,56 @@ header {
     font-size: 2em;
 }
 
+span:nth-child(1n){
+    animation: fuzz 2s infinite;
+}
+
+span:nth-child(2n){
+    animation: fuzz 1.5s infinite;
+}
+
+span:nth-child(3n){
+    animation: fuzz 1.5s 0.5s infinite;
+}
+
+span:nth-child(4n){
+    animation: fuzz 1.5s 1s infinite;
+}
+
+@keyframes fuzz {
+    0% {
+        text-shadow: 0 0 white;
+    }
+
+    15% {
+        text-shadow: -1px 0 white;
+    }
+
+    30% {
+        text-shadow: 1px 0 white;
+    }
+
+    45% {
+        text-shadow: 0 1px white;
+    }
+
+    60% {
+        text-shadow: 0 -1px white;
+    }
+
+    75% {
+        text-shadow: -1px 0 white;
+    }
+
+    90% {
+        text-shadow: 0 -1px white;
+    }
+
+    /*
+        ALL SIDES SHADOW --- text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    */
+}
+
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
