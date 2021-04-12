@@ -1,0 +1,332 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap');
+
+:root {
+  --delay-first: 0.2s;
+  --delay-second: 2s;
+  --delay-third: 3.2s;
+  --anim-circle-length: 0.2s;
+  --anim-split-length: 2s;
+  --anim-name-length: 1.5s;
+  --main-color: #28527a;
+  --background-color: #fbeeac;
+  --accent-color: #59c9a6;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+#letters-grid, #name-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 0px;
+  position: absolute;
+  margin: auto;
+  width: 100%;
+  top: 30vh;
+}
+
+#name-grid {
+  position: absolute;
+  text-align: left;
+  z-index: 1;
+  grid-template-rows: 150px 10px 100px;
+  width: 250px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding-left: 40px;
+}
+
+.name-text {
+  user-select: none;
+  align-self: end;
+  opacity: 0;
+  font-size: 4em;
+  font-weight: 700;
+  padding: 0;
+}
+
+.name-text.bottom {
+  padding-left: 45px;
+}
+
+
+/* creating the circles */
+.circle-container {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  position: relative;
+}
+
+.rectangle-container {
+  width: 10px;
+  height: 200px;
+  margin: auto;
+  position: relative;
+}
+
+.hold {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip: rect(0px, 100px, 100px, 50px);
+  border-radius: 100%;
+  background-color: var(--background-color);
+}
+
+.fill {
+  background-color: var(--main-color);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  clip: rect(0px, 50px, 100px, 0px);
+}
+
+.fill-rectangle {
+  background-color: var(--main-color);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* animations */
+.left .fill {
+  z-index: 1;
+  -webkit-animation: left-circle var(--anim-circle-length) linear;
+  -moz-animation: left-circle var(--anim-circle-length) linear;
+  animation: left-circle var(--anim-circle-length) linear both;
+}
+
+@keyframes left-circle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@-webkit-keyframes left-circle {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(180deg);
+  }
+}
+
+.right {
+  z-index: 3;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.right .fill {
+  z-index: 3;
+  -webkit-animation: right-circle var(--anim-circle-length) linear;
+  -moz-animation: right-circle var(--anim-circle-length) linear;
+  animation: right-circle var(--anim-circle-length) linear both, color-change var(--anim-split-length) ease both;
+  -webkit-animation-delay: var(--delay-first);
+  -moz-animation-delay: var(--delay-first);
+  animation-delay: var(--delay-first), var(--delay-second);
+}
+
+@keyframes right-circle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@-webkit-keyframes right-circle {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(180deg);
+  }
+}
+
+@keyframes color-change {
+  50% {
+    background-color: var(--accent-color);
+  }
+  100% {
+    background-color: var(--accent-color);
+  }
+}
+
+#letters-grid {
+  animation: bounce 1s;
+  animation-delay: 0.2s;
+}
+
+.circle-container.top {
+  -webkit-animation: top-split var(--anim-split-length) ease;
+  -moz-animation: top-split var(--anim-split-length) ease;
+  animation: top-split var(--anim-split-length) ease both;
+  -webkit-animation-delay: var(--delay-second);
+  -moz-animation-delay: var(--delay-second);
+  animation-delay: var(--delay-second);
+  top: 100px;
+}
+
+@keyframes top-split {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(0px, -50px);
+  }
+
+  100% {
+    transform: translate(-130px, -50px);
+  }
+}
+
+.circle-container.bottom {
+  top: -100px;
+  -webkit-animation: bottom-split var(--anim-split-length) ease;
+  -moz-animation: bottom-split var(--anim-split-length) ease;
+  animation: bottom-split var(--anim-split-length) ease both;
+  -webkit-animation-delay: var(--delay-second);
+  -moz-animation-delay: var(--delay-second);
+  animation-delay: var(--delay-second);
+}
+
+@keyframes bottom-split {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  50% {
+    transform: translate(0px, -50px);
+  }
+
+  100% {
+    transform: translate(-120px, -50px);
+  }
+}
+
+.rectangle-container {
+  top: -100px;
+  opacity: 0;
+  -webkit-animation: rectangle-split var(--anim-split-length) ease;
+  -moz-animation: rectangle-split var(--anim-split-length) ease;
+  animation: rectangle-split var(--anim-split-length) ease both;
+  -webkit-animation-delay: var(--delay-second);
+  -moz-animation-delay: var(--delay-second);
+  animation-delay: var(--delay-second);
+}
+
+@keyframes rectangle-split {
+  0% {
+    transform: translate(0px, 100px);
+    opacity: 0;
+    height: 100px;
+  }
+  1% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: translate(0px, 50px);
+    opacity: 1;
+    height: 200px;
+  }
+
+  100% {
+    transform: translate(-125px, 50px);
+    opacity: 1;
+    height: 200px;
+  }
+}
+
+.name-text, nav a {
+  -webkit-animation: fadeInDown var(--anim-name-length) both;
+  -moz-animation: fadeInDown var(--anim-name-length) both;
+  animation: fadeInDown var(--anim-name-length) both;
+  -webkit-animation-delay: var(--delay-third);
+  -moz-animation-delay: var(--delay-third);
+  animation-delay: var(--delay-third);
+}
+
+#spacer {
+  height: 10vh;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  height: 10vh;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 2em;
+  font-weight: 400;
+}
+
+nav a {
+  text-decoration: none;
+  color: #28527a;
+  background-size: 20px 2px, 100% 2px, 0 2px;
+  background-position: calc(20px * -1) 100%, 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 1s ease, background-position 1s ease;
+  z-index: 3;
+}
+
+/* waypoint changes */
+.side-nav {
+  flex-flow: column;
+  position: fixed;
+  top: 40vh;
+  left: 10vw;
+  text-align: left;
+}
+
+.active-nav {
+  background-image: linear-gradient(#222b40, #222b40),
+  linear-gradient(rgb(176, 251, 188), rgb(176, 251, 188)),
+  linear-gradient(#feb2b2, #feb2b2);
+  background-size: 20px 2px, 0 2px, 100% 2px;
+  background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%;
+  width: auto;
+}
+
+a:hover {
+  background-size: 20px 2px, 0 2px, 100% 2px;
+  background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%;
+}
+
+.text-section {
+  margin: auto 30vmax;
+  position: relative;
+  top: 100vh;
+  height: 100vh;
+}
+
+.text-section p {
+  padding-top: 100px;
+  font-size: 20px;
+}
