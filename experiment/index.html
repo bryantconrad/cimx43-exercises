@@ -2,72 +2,200 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="icon" href="./images/cblogo.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="./assets/style.css">
     <title>Conrad Bryant</title>
 </head>
 
 <body>
-    <div id='spacer'>
-    <nav>
-        <a class="links" id="link-about" href="#about">about</a>
-        <a class="links" id="link-work" href="#work">work</a>
-        <a class="links" id="link-contact" href="#contact">contact</a>
-    </nav>
+    <div id="spacer">
+        <a href="#"><img class="logo" src="./images/cblogo.svg" alt="logo"></a>
+        <nav>
+            <a class="links" id="link-about" href="#about">about</a>
+            <a class="links" id="link-work" href="#work">work</a>
+            <div id="project-links">
+                <a href="#wvum">WVUM</a>
+                <a href="#geomuse">GeoMuse</a>
+                <a href="#gorun">Gorun</a>
+            </div>
+            <a class="links" id="link-contact" href="#contact">contact</a>
+        </nav>
     </div>
 
     <section id="splash">
-    <div id="letters-grid">
-        <div class="circle-container top">
-            <div class="hold right">
-                <div class="fill"></div>
+        <div id="letters-grid">
+            <div class="circle-container top">
+                <div class="hold right">
+                    <div class="fill"></div>
+                </div>
+            </div>
+            <div class="rectangle-container">
+                <div class="left">
+                    <div class="fill-rectangle"></div>
+                </div>
+            </div>
+            <div class="circle-container bottom">
+                <div class="hold left">
+                    <div class="fill"></div>
+                </div>
             </div>
         </div>
-        <div class="rectangle-container">
-            <div class="left">
-                <div class="fill-rectangle"></div>
-            </div>
+
+        <div id="name-grid">
+
+            <div class="name-text top">onrad</div>
+            <div></div>
+            <div class="name-text bottom">ryant</div>
+
         </div>
-        <div class="circle-container bottom">
-            <div class="hold left">
-                <div class="fill"></div>
+    </section>
+
+    <div id="sections-container">
+        <section class="text-section" id="about">
+            <h2>
+                Hi, I'm Conrad.
+            </h2>
+            <p class="subheading">
+                I do web dev. I really enjoy it.
+            </p>
+            <p>
+                I'm a Spring 2021 graduate from the University of Miami, with a bachelor's in music and an additional
+                major in Interactive Media. I've been a web developer for <a class="underline"
+                    href="https://herbert.miami.edu/" target="_blank">Miami Herbert Business School</a> and webmaster
+                for <a class="underline" href="https://www.wvum.org/" target="_blank">WVUM 90.5FM</a> for the past 2
+                years.
+            </p>
+            <p id="random-output-lead">
+                When I build something, I like to
+            </p>
+            <p id="random-output">
+            </p>
+            <p>
+                I care about user experience. I make use of a variety of tools for my projects, and I'm always ready to
+                learn a new one. I love creating, problem-solving, and working with people to make the best thing
+                possible. I'm looking for a full-time role where I can make use of these skills and pursue these
+                passions.
+            </p>
+        </section>
+
+
+
+
+        <section class="text-section" id="work">
+            <h2>
+                Here are some of my projects.
+            </h2>
+
+            <div class="card" id="wvum">
+                <img id="wvum-logo" class="project-logos" height="200px" src="./images/wvum.png" alt="WVUM 90.5FM">
+
+                <article class="projects" id="wvum-project">
+                    <h2>
+                        DJ Interface and SportsCast
+                    </h2>
+                    <p class="subheading">A couple of web apps I created to enhance the listener experience for our
+                        beloved radio station.</p>
+                    <p>WVUM has a robust lineup of DJs and shows, coming on at all sorts of odd and even hours. People
+                        out there need to know who's spinning! Enter the aptly named:</p>
+                    <h3>DJ Interface</h3>
+                    <img id="wvum-dj-mockup" src="./images/dj-mockup.png" alt="dj interface">
+
+                    <p>This interface provides a simple 2-click setup for DJs to display their show on the website.</p>
+                    <ol>
+                        <li>Select / search your show name in the dropdown</li>
+                        <li>Click submit, and now the world can see you</li>
+                    </ol>
+                    <p>
+                        It's written in lightweight HTML and JavaScript, and makes use of Google Firebase for the
+                        backend.
+                        It's deployable anywhere and currently hosted on our website behind a password so our DJs can
+                        even produce remotely.</p>
+                    <p>The purpose is simple, but with our ever-rotating roster of both DJs and webmasters, it had to be
+                        easy to use and maintain. And it is! See for yourself on <a href="#">Github.</a></p>
+
+                    <h3>SportsCast</h3>
+                    <img id="wvum-sports-mockup" src="./images/sportsinterface.png">
+                    <p>WVUM is also the premiere destination for UM sports listening. To enhance the fan experience, we
+                        wanted to show real-time game info, and we've done just that.</p>
+                    <p>The needs were similar to the DJ interface: a simple UI so that minimal training is required for
+                        our casters,
+                        and of course the public-facing side has to be instantly readable. The execution was a bit more
+                        complicated, though, because we wanted record keeping as well - not just instantaneous
+                        information.</p>
+                    <p>I initially created it in PHP, before coming to the numbing realization that our website CMS did
+                        not support it. Cue the restart from scratch, this time using the same trusty Firebase methods
+                        as our previous interface (just with a much more complex database now). And it was another
+                        success! Another easily packageable/deployable, lightweight JavaScript app.</p>
+                    <p>The main functionality is finished, but work is still ongoing. The roadmap has more game info
+                        options
+                        in the pipeline, coming soon to a <a href="#">Github</a> repo near you.</p>
+                    <p class="last">I loved these projects. I got to go through the entire design and build process for
+                        each, getting to work both my technical and creative muscles. You can see them in action at <a
+                            href="https://www.wvum.org/listen">wvum.org/listen.</a></p>
+
+
+                </article>
             </div>
-        </div>
+
+            <div class="card" id="geomuse">
+                <img id="geomuse-logo" class="project-logos" height="80px" src="./images/geomuse.png" alt="GeoMuse">
+
+                <article class="projects" id="geomuse-project">
+                    <h2>
+                        GeoMuse Prototype
+                    </h2>
+                    <p class="subheading">An exercise in design.</p>
+                    <img src="./images/geomuse.png" alt="GeoMuse">
+                    <p>This was a fun project to create a mockup of a mobile app being designed at UM. The function is
+                        to aid users in exploring an area - UM's campus in this case - for art. Being only a prototype,
+                        I was able to focus solely on design and UX.</p>
+                    <p>I prioritized ease of navigation. The app is meant to be a complement to the larger activity of sightseeing and exploring. That meant there should be no digging required to find any information. Nothing in the app is more than 2 screens deep, and there is always lateral movement available with no dead ends that require users to back out to switch screens. </p>
+                    <p>
+                        I also had consistency in mind. I sought to keep the layout similar or identical where possible among different screens, so that even when performing different actions there is minimal attention/learning required. I wanted to make clear where the user is at all times and to keep the information layout and hierarchy as
+                        simple as possible with minimal layers.</p>
+                    <div class="mockup">
+                        <img src="./images/phone.png">
+                        <iframe width="360" height="640"
+                            src="https://xd.adobe.com/embed/f851d877-e41a-408c-565a-4193b8a8d530-8e60/" frameborder="0"
+                            allowfullscreen></iframe>
+                    </div>
+                </article>
+            </div>
+
+            <div class="card" id="gorun">
+                <img id="gorun-logo" class="project-logos" height="80px" src="./images/gorun.webp" alt="GoRun">
+
+                <article class="projects" id="gorun-project">
+                    <h2>WIP</h2>
+                    <p>Check back soon!</p>
+                </article>
+            </div>
+        </section>
+
+
+
+
+        <section class="text-section" id="contact">
+            <h2>
+                Get in touch!
+            </h2>
+            <p class="last">
+                <a href="mailto:Bryant.ConradL@gmail.com">Bryant.ConradL@gmail.com</a>
+            <div class="contact-icons">
+                <a href="https://github.com/bryantconrad"><img src="./images/github.svg" alt="Github"></a>
+                <a href="https://www.linkedin.com/in/conrad-bryant-321919185/"><img src="./images/linkedin-black.svg"
+                        alt="LinkedIn"></a>
+            </div>
+            </p>
+        </section>
     </div>
-
-    <div id="name-grid">
-
-        <div class="name-text top">onrad</div>
-        <div></div>
-        <div class="name-text bottom">ryant</div>
-
-    </div>
-    </section>
-
-    <section class="text-section" id="about">
-        <p>
-            ABOUTTTTTTT Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate sapiente ipsam nostrum aspernatur, atque labore maxime officia sint neque deleniti. Ullam eligendi quas, eaque ducimus assumenda placeat incidunt quia quis!
-        </p>
-    </section>
-
-    <section class="text-section" id="work">
-        <p>
-            WORKKKKKKK Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate sapiente ipsam nostrum aspernatur, atque labore maxime officia sint neque deleniti. Ullam eligendi quas, eaque ducimus assumenda placeat incidunt quia quis!
-        </p>
-    </section>
-
-    <section class="text-section" id="contact">
-        <p>
-            CONTACTTTTTTTT Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate sapiente ipsam nostrum aspernatur, atque labore maxime officia sint neque deleniti. Ullam eligendi quas, eaque ducimus assumenda placeat incidunt quia quis!
-        </p>
-    </section>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script> -->
-    <script type="text/javascript" src="assets/jquery.waypoints.min.js"></script>
-    <script type="text/javascript" src="assets/script.js"></script>
+    <!-- <script type="text/javascript" src="./assets/jquery.mousewheel.min.js"></script> -->
+    <script type="text/javascript" src="./assets/jquery.waypoints.min.js"></script>
+    <script type="text/javascript" src="./assets/script.js"></script>
 
 </body>
 

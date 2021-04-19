@@ -8,8 +8,12 @@
   --anim-split-length: 2s;
   --anim-name-length: 1.5s;
   --main-color: #28527a;
-  --background-color: #fbeeac;
+  --background-color: #FFFAF0;
   --accent-color: #59c9a6;
+  --accent-color-dark: #37A985;
+  --accent-color-2: #D86327;
+  --text-color: #111;
+  --white-text: #FFFAF0;
 }
 
 * {
@@ -18,11 +22,17 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--background-color);
 }
 
-#letters-grid, #name-grid {
+/* splash screen styles */
+#letters-grid,
+#name-grid {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 0px;
@@ -51,6 +61,7 @@ body {
   font-size: 4em;
   font-weight: 700;
   padding: 0;
+  color: var(--text-color);
 }
 
 .name-text.bottom {
@@ -58,7 +69,7 @@ body {
 }
 
 
-/* creating the circles */
+/* creating circles for animation/logo */
 .circle-container {
   width: 100px;
   height: 100px;
@@ -168,6 +179,7 @@ body {
   50% {
     background-color: var(--accent-color);
   }
+
   100% {
     background-color: var(--accent-color);
   }
@@ -243,6 +255,7 @@ body {
     opacity: 0;
     height: 100px;
   }
+
   1% {
     opacity: 1;
   }
@@ -260,7 +273,8 @@ body {
   }
 }
 
-.name-text, nav a {
+.name-text,
+nav {
   -webkit-animation: fadeInDown var(--anim-name-length) both;
   -moz-animation: fadeInDown var(--anim-name-length) both;
   animation: fadeInDown var(--anim-name-length) both;
@@ -269,21 +283,19 @@ body {
   animation-delay: var(--delay-third);
 }
 
-#spacer {
-  height: 10vh;
-  width: 100%;
-  position: absolute;
-  z-index: 1;
-}
 
+/* nav styling */
 nav {
   display: flex;
-  justify-content: space-evenly;
-  height: 10vh;
-  text-align: center;
+  flex-flow: row wrap;
+  /* justify-content: space-evenly; */
+  /* height: 10vh; */
+  text-align: left;
   margin-top: 40px;
+  margin-left: max(10vw, 30px);
   font-size: 2em;
   font-weight: 400;
+  gap: 10px 30px;
 }
 
 nav a {
@@ -296,37 +308,265 @@ nav a {
   z-index: 3;
 }
 
-/* waypoint changes */
-.side-nav {
-  flex-flow: column;
-  position: fixed;
-  top: 40vh;
-  left: 10vw;
-  text-align: left;
+#spacer {
+  height: 10vh;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
 }
 
-.active-nav {
-  background-image: linear-gradient(#222b40, #222b40),
-  linear-gradient(rgb(176, 251, 188), rgb(176, 251, 188)),
-  linear-gradient(#feb2b2, #feb2b2);
+
+/* waypoint alterations to nav */
+.side-nav {
+  flex-flow: column nowrap;
+  position: fixed;
+  top: 40vh;
+  text-align: left;
+  align-items: flex-start;
+  margin: auto;
+  margin-left: max(10vw, 30px);
+  animation: fadeInDown var(--anim-name-length) backwards, bounceInDown 0.5s;
+  animation-delay: 0s, 0s;
+}
+
+#project-links {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  padding-left: 30px;
+  animation: bounceInLeft 0.5s both;
+}
+
+#project-links a {
+  color: var(--text-color);
+  font-size: 0.7em;
+  padding-top: 10px;
+}
+
+
+/* nav underline */
+.active-nav,
+nav a:hover {
+  background-image: linear-gradient(var(--main-color), var(--main-color)),
+    linear-gradient(var(--accent-color-2), var(--accent-color-2)),
+    linear-gradient(var(--accent-color), var(--accent-color));
   background-size: 20px 2px, 0 2px, 100% 2px;
   background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%;
   width: auto;
 }
 
-a:hover {
-  background-size: 20px 2px, 0 2px, 100% 2px;
-  background-position: calc(100% + 20px) 100%, 100% 100%, 0 100%;
+
+/* style and animate logo */
+.logo {
+  width: 50px;
+  position: fixed;
+  margin-top: 40px;
+  margin-left: max(10vw, 30px);
+  opacity: 0;
 }
 
+.logo-show {
+  opacity: 1;
+  animation: bounceInLeft 0.5s;
+}
+
+.logo-hide {
+  animation: bounceOutLeft 0.5s both;
+}
+
+
+/* main content */
 .text-section {
-  margin: auto 30vmax;
+  margin: auto 30vw;
   position: relative;
   top: 100vh;
-  height: 100vh;
+  min-height: auto;
+  width: min(800px, 50%);
+  padding-top: 20vh;
+  font-size: 20px;
+  color: var(--text-color);
+}
+
+.text-section h2 {
+  padding-bottom: 30px;
+}
+
+.subheading {
+  font-weight: 700;
 }
 
 .text-section p {
-  padding-top: 100px;
-  font-size: 20px;
+  padding-bottom: 30px;
+  line-height: 2em;
 }
+
+.text-section p a {
+  text-decoration: none;
+  color: var(--accent-color-2);
+  position: relative;
+  font-weight: 700;
+}
+
+.last {
+  padding-bottom: none;
+}
+
+
+/* about section */
+#random-output-lead {
+  padding-bottom: 10px;
+  font-weight: 400;
+}
+
+#random-output {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--main-color);
+  margin-top: -15px;
+}
+
+#random-output:hover {
+  color: var(--accent-color-dark);
+  animation: bounce 0.5s;
+}
+
+
+/* work section */
+.card {
+  height: 30vh;
+  width: 30vh;
+  border-radius: 20px;
+  background-color: var(--main-color);
+  display: flex;
+  margin: 50px auto;
+  color: var(--white-text);
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.project-logos  {
+  display: block;
+  margin: auto;
+  align-self: center;
+  height: auto;
+  max-width: 75%;
+}
+
+#wvum-logo {
+  max-width: 50%;
+}
+
+.project-logos:hover, .contact-icons img:hover {
+  animation: pulse 0.5s infinite both;
+}
+
+.active-card {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  height: 100vh;
+  width: 100vw;
+  border-radius: 0;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.noscroll {
+  overflow: hidden;
+}
+
+/* active card stylings */
+.projects {
+  width: 100%;
+  margin: 10vh 30vw;
+  overflow: visible;
+}
+
+.projects h3 {
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+.projects ul, .projects ol {
+  padding-left: 20px;
+  line-height: 2em;
+  padding-bottom: 30px;
+}
+
+.projects a {
+  color: var(--accent-color-2);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+#wvum-dj-mockup, #wvum-sports-mockup, .projects img {
+  width: min(1000px, 50vw);
+  padding-bottom: 30px;
+}
+
+.mockup {
+  position: relative;
+  /* margin-bottom: 10vh; */
+  width: 10px;
+}
+
+.mockup img {
+  width: 384px;
+  height: 696px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.mockup iframe {
+  position: absolute;
+  top: 11px;
+  left: 10px;
+}
+
+/* contact section */
+#contact p a {
+  color: var(--accent-color-2);
+  padding-bottom: 100px;
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.contact-icons img {
+  height: 100px;
+}
+
+#contact {
+  padding-bottom: 20vh;
+}
+
+/* alternate underline animations
+.text-section p a:hover{
+  color: var(--accent-color-2);
+}
+
+.text-section > p > a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent-color);
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.text-section p a:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
+} */
